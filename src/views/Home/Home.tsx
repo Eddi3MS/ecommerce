@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom'
+import { ErrorCard } from '../../components'
+import { IError } from '../../errors'
 import { useCategories } from '../../queries'
 import styles from './styles.module.scss'
-import { AppError, ErrorHandling } from '../../errors'
 
 const Home = () => {
   const { data, isLoading, error } = useCategories()
@@ -10,15 +11,13 @@ const Home = () => {
     return <p>loading...</p>
   }
 
-  if (error || !data?.length) {
-    const errorHandling = new ErrorHandling(
-      error,
-      'Something went wrong when listing categories'
-    )
-
-    throw new AppError(
-      errorHandling.error.message,
-      errorHandling.error.statusCode
+  if (!!error || !data?.length) {
+    return (
+      <section className={styles.p_home_categories}>
+        <ErrorCard
+          errorMessage={(error as IError)?.message ?? 'No categories found.'}
+        />
+      </section>
     )
   }
 

@@ -1,15 +1,14 @@
 import { useRouteError } from 'react-router-dom'
-import { ErrorHandling } from '../../errors'
+import { IError } from '../../errors'
+import { ErrorCard } from '../../components'
 
 function ErrorPage() {
-  const error = useRouteError()
-
-  const errorHandling = new ErrorHandling(error, 'Something went wrong!')
+  const error = useRouteError() as IError
 
   return (
-    <>
-      <p>{errorHandling.error.message}</p>
-    </>
+    <section>
+      <ErrorCard errorMessage={error?.message} />
+    </section>
   )
 }
 

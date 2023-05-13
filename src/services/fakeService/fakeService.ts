@@ -16,8 +16,8 @@ class FakeService {
     try {
       const response = await api.get<CategoriesDTO>(`categories`)
 
-      if (response.status === 204) {
-        return []
+      if (!response.data) {
+        throw new AppError('Something went wrong when listing categories.')
       }
 
       const parsedData = categoriesSchema.parse(response.data)
@@ -44,8 +44,8 @@ class FakeService {
     try {
       const response = await api.get<ProductsListDTO>(`category/${category}`)
 
-      if (response.status === 204) {
-        return []
+      if (!response.data.length) {
+        throw new AppError("Category with the given identifier doesn't exist.")
       }
 
       const parsedData = productsListSchema.parse(response.data)

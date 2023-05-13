@@ -1,0 +1,17 @@
+.c_error_card {
+  text-align: center;
+  width: min(450px, 100% - 2rem);
+  margin-inline: auto;
+
+  a {
+    color: var(--color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--hover);
+    }
+  }
+}

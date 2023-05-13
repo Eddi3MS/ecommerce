@@ -1,10 +1,11 @@
 import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
+import { ErrorCard } from '../components'
 import { Layout } from '../layouts'
+import Error from '../views/Error'
 const Home = lazy(() => import('../views/Home'))
 const Category = lazy(() => import('../views/Category'))
 const Product = lazy(() => import('../views/Product'))
-import Error from '../views/Error'
 
 export const routes = createBrowserRouter([
   {
@@ -36,6 +37,15 @@ export const routes = createBrowserRouter([
               <Suspense fallback={<p>loading...</p>}>
                 <Product />
               </Suspense>
+            ),
+          },
+          {
+            path: '*',
+            element: (
+              <ErrorCard
+                errorMessage="The page yo're looking for, weren't found."
+                notFound
+              />
             ),
           },
         ],

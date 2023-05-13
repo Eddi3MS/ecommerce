@@ -1,9 +1,10 @@
 import { NavLink, useParams } from 'react-router-dom'
+import { Card } from '../../components'
+import ErrorCard from '../../components/ErrorCard/ErrorCard'
+import { IError } from '../../errors'
 import { useCategories, useCategory } from '../../queries'
 import { CategoryType } from '../../services/fakeService/DTO'
-import { Card } from '../../components'
 import styles from './styles.module.scss'
-import { AppError, ErrorHandling } from '../../errors'
 
 const Category = () => {
   const { data: categories } = useCategories()
@@ -19,15 +20,13 @@ const Category = () => {
     return <p>loading...</p>
   }
 
-  if (error || !data?.length) {
-    const errorHandling = new ErrorHandling(
-      error,
-      'Something went wrong when listing products'
-    )
-
-    throw new AppError(
-      errorHandling.error.message,
-      errorHandling.error.statusCode
+  if (!!error || !data?.length) {
+    return (
+      <section className={styles.p_category}>
+        <ErrorCard
+          errorMessage={(error as IError)?.message || 'No products found.'}
+        />
+      </section>
     )
   }
 
@@ -47,17 +46,17 @@ const Category = () => {
         </p>
       </div>
 
-      <section className={styles.p_category_products}>
+      <div className={styles.p_category_products}>
         {data?.map((p) => (
           <NavLink to={`/products/${String(p.id)}`} key={p.id}>
             <Card>
               <Card.Image src={p.image} alt={`${p.title} image`} />
-              <Card.Title title={p.title} className="clamp-3" />
+              <Card.Title title={p.title} className="clamp-2" />
               <Card.Price price={p.price} />
             </Card>
           </NavLink>
         ))}
-      </section>
+      </div>
     </section>
   )
 }
