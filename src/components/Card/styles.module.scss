@@ -1,0 +1,46 @@
+.c_card {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--color);
+
+  &_image {
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+  }
+
+  &,
+  &_column,
+  &_row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &,
+  &_column {
+    flex: 1;
+    flex-direction: column;
+  }
+
+  &_description {
+    summary {
+      margin-bottom: 1rem;
+      cursor: pointer;
+
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+        content: '';
+      }
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useCategories } from '../../queries'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 import { AppError, ErrorHandling } from '../../errors'
 
 const Home = () => {

@@ -1,0 +1,18 @@
+.c_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color);
+  border: 1px solid var(--color);
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  outline-color: transparent;
+  transition: color 0.2s linear, border-color 0.2s linear;
+
+  &:is(:hover, :focus, :focus-visible) {
+    color: var(--hover);
+    border-color: var(--hover);
+  }
+}

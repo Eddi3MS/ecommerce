@@ -2,7 +2,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import { useCategories, useCategory } from '../../queries'
 import { CategoryType } from '../../services/fakeService/DTO'
 import { Card } from '../../components'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 import { AppError, ErrorHandling } from '../../errors'
 
 const Category = () => {
@@ -47,17 +47,17 @@ const Category = () => {
         </p>
       </div>
 
-      {data?.map((p) => (
-        <NavLink to={`/products/${String(p.id)}`} className="">
-          <Card
-            key={p.id}
-            description={p.description}
-            image={p.image}
-            title={p.title}
-            price={p.price}
-          />
-        </NavLink>
-      ))}
+      <section className={styles.p_category_products}>
+        {data?.map((p) => (
+          <NavLink to={`/products/${String(p.id)}`} key={p.id}>
+            <Card>
+              <Card.Image src={p.image} alt={`${p.title} image`} />
+              <Card.Title title={p.title} className="clamp-3" />
+              <Card.Price price={p.price} />
+            </Card>
+          </NavLink>
+        ))}
+      </section>
     </section>
   )
 }

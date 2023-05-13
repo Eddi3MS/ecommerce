@@ -3,9 +3,9 @@ export function formatToCurrency(value: string) {
 
   if (!numericValue) return ''
 
-  const formattedValue = new Intl.NumberFormat('pt-BR', {
+  const formattedValue = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'BRL',
+    currency: 'USD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(numericValue / 100)

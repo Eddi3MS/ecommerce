@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
+import { Button } from '../../components'
 
 const Layout = () => {
   return (
@@ -8,9 +9,9 @@ const Layout = () => {
         <div className={styles.l_layout_header_wrapper}>
           <NavLink to="/">Commerce</NavLink>
 
-          <button className={styles.l_layout_button}>
+          <Button className={styles.l_layout_header_wrapper_button}>
             <i className="ph ph-shopping-cart"></i>
-          </button>
+          </Button>
         </div>
       </header>
       <Outlet />

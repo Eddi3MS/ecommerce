@@ -1,0 +1,17 @@
+.p_product {
+  display: grid;
+  max-width: 840px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  &_info {
+    flex: 1;
+    justify-content: flex-end;
+
+    &_total,
+    &_quantity {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

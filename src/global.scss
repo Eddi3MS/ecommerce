@@ -11,9 +11,11 @@ html {
   --bg: #f6f6f8;
   --color: #202024;
 }
+
 body {
   background-color: var(--bg);
   color: var(--color);
+  padding-bottom: 1rem;
 }
 
 button {
@@ -23,5 +25,25 @@ button {
 a {
   text-decoration: none;
   font-family: inherit;
+}
+
+.clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d3d3df;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg);
 }
 
