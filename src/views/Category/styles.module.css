@@ -1,0 +1,23 @@
+.p_category {
+  display: grid;
+  max-width: 680px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.p_category_heading {
+  border-bottom: 2px solid var(--color);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.p_category_heading h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.p_category_heading p {
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 450px;
+}
