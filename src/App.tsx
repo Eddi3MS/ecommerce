@@ -1,7 +1,9 @@
 import { RouterProvider } from 'react-router-dom'
 import './global.scss'
 import routes from './routes'
+import { Provider } from 'react-redux'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { store } from './store'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,7 +18,9 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={routes} />
+      <Provider store={store}>
+        <RouterProvider router={routes} />
+      </Provider>
     </QueryClientProvider>
   )
 }

@@ -4,11 +4,17 @@ import { Button, Card, ErrorCard, Loading, QttyButton } from '../../components'
 import { IError } from '../../errors'
 import { useProduct } from '../../queries'
 import styles from './styles.module.scss'
+import { useAppDispatch, useAppSelector } from '../../store'
+import { handleAddItemToCart } from '../../store/cartSlice/cartSlice'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
 
   const [counter, setCounter] = useState(1)
+
+  const cartReducer = useAppSelector((state) => state.cart)
+  const dispatch = useAppDispatch()
+  console.log('🚀 ~ file: Product.tsx:15 ~ Product ~ cartReducer:', cartReducer)
 
   const {
     data: product,
@@ -38,6 +44,17 @@ const Product = () => {
     setCounter((curr) => (type === 'add' ? curr + 1 : curr - 1))
   }
 
+  const handleAddItem = () => {
+    const itemToAdd = {
+      name: product.title,
+      id: product.id,
+      unit_price: product.price,
+      quantity: counter,
+    }
+
+    dispatch(handleAddItemToCart(itemToAdd))
+  }
+
   const totalPrice = product.price * counter
 
   return (
@@ -60,7 +77,7 @@ const Product = () => {
                 total:
                 <Card.Price price={totalPrice} style={{ fontWeight: '600' }} />
               </p>
-              <Button>add to cart</Button>
+              <Button onClick={handleAddItem}>add to cart</Button>
             </Card.Column>
           </Card.Column>
         </Card.Row>
