@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ErrorCard } from '../../components'
+import { ErrorCard, Loading } from '../../components'
 import { IError } from '../../errors'
 import { useCategories } from '../../queries'
 import styles from './styles.module.scss'
@@ -8,7 +8,7 @@ const Home = () => {
   const { data, isLoading, error } = useCategories()
 
   if (isLoading) {
-    return <p>loading...</p>
+    return <Loading />
   }
 
   if (!!error || !data?.length) {

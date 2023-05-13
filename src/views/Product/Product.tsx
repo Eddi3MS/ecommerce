@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button, Card, ErrorCard, QttyButton } from '../../components'
+import { Button, Card, ErrorCard, Loading, QttyButton } from '../../components'
 import { IError } from '../../errors'
 import { useProduct } from '../../queries'
 import styles from './styles.module.scss'
@@ -20,7 +20,7 @@ const Product = () => {
   })
 
   if (isLoading) {
-    return <p>loading...</p>
+    return <Loading />
   }
 
   if (!!error || !product || !Object.keys(product).length) {

@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { ErrorCard } from '../components'
+import { ErrorCard, Loading } from '../components'
 import { Layout } from '../layouts'
 import Error from '../views/Error'
 const Home = lazy(() => import('../views/Home'))
@@ -18,7 +18,7 @@ export const routes = createBrowserRouter([
           {
             index: true,
             element: (
-              <Suspense fallback={<p>loading...</p>}>
+              <Suspense fallback={<Loading />}>
                 <Home />
               </Suspense>
             ),
@@ -26,7 +26,7 @@ export const routes = createBrowserRouter([
           {
             path: ':category',
             element: (
-              <Suspense fallback={<p>loading...</p>}>
+              <Suspense fallback={<Loading />}>
                 <Category />
               </Suspense>
             ),
@@ -34,7 +34,7 @@ export const routes = createBrowserRouter([
           {
             path: 'products/:id',
             element: (
-              <Suspense fallback={<p>loading...</p>}>
+              <Suspense fallback={<Loading />}>
                 <Product />
               </Suspense>
             ),
