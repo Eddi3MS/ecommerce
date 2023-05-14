@@ -8,10 +8,13 @@ import styles from './styles.module.scss'
 const Category = () => {
   const { data: categories } = useCategories()
   const { category } = useParams()
-  const currentCategory = categories?.find((cat) => cat.route === category)
+  const formattedCategory = category?.replace('-', ' ')
+  const currentCategory = categories?.find(
+    (cat) => cat.route === (formattedCategory as CategoryType)
+  )
 
   const { data, isLoading, error } = useCategory({
-    category: category?.replace('-', ' ') as CategoryType,
+    category: formattedCategory as CategoryType,
     enabled: !!category,
   })
 
