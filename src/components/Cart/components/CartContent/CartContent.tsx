@@ -1,13 +1,16 @@
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../..'
 import { useAppDispatch, useAppSelector } from '../../../../store'
 import { handleClearCart } from '../../../../store/cartSlice/cartSlice'
 import { formatToCurrency } from '../../../../utils'
 import CartCard from '../CartCard'
 import styles from './styles.module.scss'
+import { Close } from '@radix-ui/react-popover'
 
 const CartContent = () => {
   const { cart } = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const totalCart = cart
     .reduce((acc, att) => {
@@ -19,6 +22,11 @@ const CartContent = () => {
 
   const handleClear = () => {
     dispatch(handleClearCart())
+  }
+
+  const handleConfirm = () => {
+    navigate('/success')
+    handleClear()
   }
 
   return (
@@ -42,7 +50,9 @@ const CartContent = () => {
         <Button variant="ghost" onClick={handleClear}>
           clear cart
         </Button>
-        <Button>confirm purchase</Button>
+        <Close asChild>
+          <Button onClick={handleConfirm}>confirm purchase</Button>
+        </Close>
       </div>
     </div>
   )

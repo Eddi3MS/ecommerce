@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { redirect, useNavigate, useParams } from 'react-router-dom'
 import { Button, Card, ErrorCard, Loading, QttyButton } from '../../components'
 import { IError } from '../../errors'
 import { useProduct } from '../../queries'
@@ -9,6 +9,7 @@ import { handleAddItemToCart } from '../../store/cartSlice/cartSlice'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
 
   const [counter, setCounter] = useState(1)
 
@@ -53,6 +54,7 @@ const Product = () => {
     }
 
     dispatch(handleAddItemToCart(itemToAdd))
+    setCounter(1)
   }
 
   const totalPrice = product.price * counter
