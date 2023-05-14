@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { redirect, useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Button, Card, ErrorCard, Loading, QttyButton } from '../../components'
 import { IError } from '../../errors'
 import { useProduct } from '../../queries'
-import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { handleAddItemToCart } from '../../store/cartSlice/cartSlice'
+import styles from './styles.module.scss'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
 
   const [counter, setCounter] = useState(1)
 
@@ -62,7 +61,7 @@ const Product = () => {
   return (
     <section className={styles.p_product}>
       <Card>
-        <Card.Row>
+        <Card.Row className={styles.p_product_wrapper}>
           <Card.Column>
             <Card.Image src={product.image} alt={`${product?.title} image`} />
           </Card.Column>
