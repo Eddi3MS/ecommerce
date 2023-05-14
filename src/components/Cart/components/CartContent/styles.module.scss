@@ -1,0 +1,31 @@
+.c_cart_content {
+  display: grid;
+  gap: 1rem;
+
+  &_products {
+    padding: 0.5rem;
+    display: grid;
+    gap: 1rem;
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  &_total {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    & > span {
+      font-weight: 600;
+    }
+  }
+
+  &_actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    & > button {
+      font-size: 0.75rem;
+    }
+  }
+}

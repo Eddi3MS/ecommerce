@@ -1,9 +1,10 @@
-import { Card, QttyButton } from '..'
-import { useAppDispatch } from '../../store'
+import { Card, QttyButton } from '../../..'
+import { useAppDispatch } from '../../../../store'
 import {
   handleChangeCartItemQtty,
   handleRemoveProductFromCart,
-} from '../../store/cartSlice/cartSlice'
+} from '../../../../store/cartSlice/cartSlice'
+import styles from './styles.module.scss'
 
 interface CartCard {
   name: string
@@ -23,12 +24,12 @@ const CartCard = ({ id, name, price, qtty }: CartCard) => {
   }
 
   return (
-    <Card>
-      <Card.Title title={name} style={{ fontSize: '1rem' }} />
+    <Card className={styles.c_cart_card}>
+      <Card.Title title={name} className={styles.c_cart_card_title} />
       <Card.Row>
         <QttyButton counter={qtty} handleCounter={handleCounter} />
 
-        <Card.Price price={price * qtty} />
+        <Card.Price price={price * qtty} className={styles.c_cart_card_price} />
       </Card.Row>
     </Card>
   )

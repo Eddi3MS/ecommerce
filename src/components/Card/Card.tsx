@@ -72,7 +72,7 @@ const Price = ({ price, className, ...rest }: PriceProps) => {
       className={[styles.c_card_price, className ? className : ''].join(' ')}
       {...rest}
     >
-      {formatToCurrency(String(price * 100))}
+      {formatToCurrency(price.toFixed(2))}
     </span>
   )
 }

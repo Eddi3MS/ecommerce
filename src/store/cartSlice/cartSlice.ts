@@ -1,42 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { CartDTO, CartListDTO } from '../../services/localStorageService'
+import { LocalStorageService } from '../../services/localStorageService/LocalStorageService'
 
-interface CartItem {
-  id: number
-  name: string
-  unit_price: number
-  quantity: number
-}
+const localStorageCart = LocalStorageService.getCartFromStorage()
 
 interface CartState {
-  cart: CartItem[]
+  cart: CartListDTO
 }
 
 const initialState: CartState = {
-  cart: [],
+  cart: localStorageCart ?? [],
 }
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    handleAddItemToCart(state, { payload }: { payload: CartItem }) {
+    handleAddItemToCart(state, { payload }: { payload: CartDTO }) {
       const hasItem = state.cart.findIndex((item) => item.id === payload.id)
-
+      let updatedState
       if (hasItem >= 0) {
-        state.cart = state.cart.map((item) =>
+        updatedState = state.cart.map((item) =>
           item.id === payload.id
             ? { ...item, quantity: item.quantity + payload.quantity }
             : item
         )
       } else {
-        state.cart = [...state.cart, payload]
+        updatedState = [...state.cart, payload]
       }
+
+      state.cart = updatedState
+      LocalStorageService.saveCartToStorage(updatedState)
     },
     handleChangeCartItemQtty(
       state,
       { payload }: { payload: { type: 'add' | 'remove'; id: number } }
     ) {
-      state.cart = state.cart.map((product) =>
+      const updatedState = state.cart.map((product) =>
         product.id === payload.id
           ? {
               ...product,
@@ -47,13 +47,25 @@ export const cartSlice = createSlice({
             }
           : product
       )
+
+      state.cart = updatedState
+      LocalStorageService.saveCartToStorage(updatedState)
     },
 
     handleRemoveProductFromCart(
       state,
       { payload }: { payload: { id: number } }
     ) {
-      state.cart = state.cart.filter((product) => product.id !== payload.id)
+      const updatedState = state.cart.filter(
+        (product) => product.id !== payload.id
+      )
+
+      state.cart = updatedState
+      LocalStorageService.saveCartToStorage(updatedState)
+    },
+    handleClearCart(state) {
+      state.cart = []
+      LocalStorageService.saveCartToStorage([])
     },
   },
 })
@@ -62,6 +74,7 @@ export const {
   handleAddItemToCart,
   handleChangeCartItemQtty,
   handleRemoveProductFromCart,
+  handleClearCart,
 } = cartSlice.actions
 
 export default cartSlice.reducer
