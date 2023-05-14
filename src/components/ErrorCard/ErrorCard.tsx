@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Card } from '..'
+import { Card } from '@src/components'
 import styles from './styles.module.scss'
 
 const ErrorCard = ({

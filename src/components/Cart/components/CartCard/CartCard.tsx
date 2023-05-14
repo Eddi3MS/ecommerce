@@ -1,9 +1,10 @@
-import { Card, QttyButton } from '../../..'
-import { useAppDispatch } from '../../../../store'
+import { Card, QttyButton } from '@src/components'
+import { useAppDispatch } from '@src/store'
 import {
   handleChangeCartItemQtty,
   handleRemoveProductFromCart,
-} from '../../../../store/cartSlice/cartSlice'
+} from '@src/store/cartSlice/cartSlice'
+import { toast } from 'react-toastify'
 import styles from './styles.module.scss'
 
 interface CartCard {
@@ -17,8 +18,13 @@ const CartCard = ({ id, name, price, qtty }: CartCard) => {
   const dispatch = useAppDispatch()
 
   const handleCounter = (type: 'add' | 'remove') => {
-    if (qtty === 1 && type === 'remove')
-      return dispatch(handleRemoveProductFromCart({ id }))
+    if (qtty === 1 && type === 'remove') {
+      dispatch(handleRemoveProductFromCart({ id }))
+      toast.success('Product removed from the cart!', {
+        autoClose: 3000,
+      })
+      return
+    }
 
     dispatch(handleChangeCartItemQtty({ id, type }))
   }

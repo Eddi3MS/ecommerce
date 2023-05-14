@@ -1,9 +1,8 @@
+import { Card, ErrorCard, Loading } from '@src/components'
+import { IError } from '@src/errors'
+import { useCategories, useCategory } from '@src/queries'
+import { CategoryType } from '@src/services/fakeService/DTO'
 import { NavLink, useParams } from 'react-router-dom'
-import { Card, Loading } from '../../components'
-import ErrorCard from '../../components/ErrorCard/ErrorCard'
-import { IError } from '../../errors'
-import { useCategories, useCategory } from '../../queries'
-import { CategoryType } from '../../services/fakeService/DTO'
 import styles from './styles.module.scss'
 
 const Category = () => {

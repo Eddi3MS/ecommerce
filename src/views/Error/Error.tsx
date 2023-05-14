@@ -1,6 +1,6 @@
+import { ErrorCard } from '@src/components'
+import { IError } from '@src/errors'
 import { useRouteError } from 'react-router-dom'
-import { IError } from '../../errors'
-import { ErrorCard } from '../../components'
 
 function ErrorPage() {
   const error = useRouteError() as IError

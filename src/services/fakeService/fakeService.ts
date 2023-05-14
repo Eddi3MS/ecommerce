@@ -1,5 +1,5 @@
+import { AppError, ErrorHandling } from '@src/errors'
 import { z } from 'zod'
-import { AppError, ErrorHandling } from '../../errors'
 import { api } from '../api'
 import {
   CategoriesDTO,

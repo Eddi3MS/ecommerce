@@ -1,4 +1,4 @@
-import { Card } from '../../components'
+import { Card } from '@src/components'
 import styles from './styles.module.scss'
 
 const Success = () => {

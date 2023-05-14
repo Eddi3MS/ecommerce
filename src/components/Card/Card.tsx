@@ -1,7 +1,7 @@
-import { ImgHTMLAttributes, HTMLAttributes, DetailsHTMLAttributes } from 'react'
-import { formatToCurrency } from '../../utils'
+import { useImage } from '@src/hooks'
+import { formatToCurrency } from '@src/utils'
+import { DetailsHTMLAttributes, HTMLAttributes, ImgHTMLAttributes } from 'react'
 import styles from './styles.module.scss'
-import { useImage } from '../../hooks'
 
 type CardProps = HTMLAttributes<HTMLDivElement>
 const Card = ({ children, className, ...rest }: CardProps) => {

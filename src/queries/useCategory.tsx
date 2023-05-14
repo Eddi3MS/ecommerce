@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { CategoryType } from '../services/fakeService/DTO'
-import { RequestProductsFromCategory } from '../utils'
+import { CategoryType } from '@src/services/fakeService/DTO'
+import { RequestProductsFromCategory } from '@src/utils'
 
 const useCategory = ({
   category,

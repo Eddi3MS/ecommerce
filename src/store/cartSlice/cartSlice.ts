@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { CartDTO, CartListDTO } from '../../services/localStorageService'
-import { LocalStorageService } from '../../services/localStorageService/LocalStorageService'
+import {
+  CartDTO,
+  CartListDTO,
+  LocalStorageService,
+} from '@src/services/localStorageService'
 
 const localStorageCart = LocalStorageService.getCartFromStorage()
 

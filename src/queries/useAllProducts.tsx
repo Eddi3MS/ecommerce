@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { RequestAllProducts } from '../utils'
+import { RequestAllProducts } from '@src/utils'
 
-const useAllProduct = () => {
+const useAllProducts = () => {
   const { data, isLoading, error } = useQuery(['products'], () =>
     RequestAllProducts()
   )
@@ -9,4 +9,4 @@ const useAllProduct = () => {
   return { data, isLoading, error }
 }
 
-export default useAllProduct
+export default useAllProducts

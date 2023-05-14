@@ -1,7 +1,7 @@
+import { ErrorCard, Loading } from '@src/components'
+import { IError } from '@src/errors'
+import { useCategories } from '@src/queries'
 import { NavLink } from 'react-router-dom'
-import { ErrorCard, Loading } from '../../components'
-import { IError } from '../../errors'
-import { useCategories } from '../../queries'
 import styles from './styles.module.scss'
 
 const Home = () => {

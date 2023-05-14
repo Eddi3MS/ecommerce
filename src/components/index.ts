@@ -1,4 +1,5 @@
 export { default as Card } from './Card'
+export { default as Cart } from './Cart'
 export { default as ErrorCard } from './ErrorCard'
 export { default as QttyButton } from './QttyButton'
 export { default as Button } from './Button'

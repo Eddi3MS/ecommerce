@@ -1,5 +1,7 @@
+import { Cart } from '@src/components'
 import { NavLink, Outlet } from 'react-router-dom'
-import Cart from '../../components/Cart/Cart'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import styles from './styles.module.scss'
 
 const Layout = () => {
@@ -15,6 +17,7 @@ const Layout = () => {
         </div>
       </header>
       <Outlet />
+      <ToastContainer />
     </main>
   )
 }

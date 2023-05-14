@@ -1,13 +1,13 @@
+import { Card, ErrorCard, Loading, Search } from '@src/components'
+import { IError } from '@src/errors'
+import { useDebounce } from '@src/hooks'
+import { useAllProducts } from '@src/queries'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Card, ErrorCard, Loading, Search } from '../../components'
-import { useDebounce } from '../../hooks'
-import useAllProduct from '../../queries/useAllProducts'
 import styles from './styles.module.scss'
-import { IError } from '../../errors'
 
 const Products = () => {
-  const { data: products, isLoading, error } = useAllProduct()
+  const { data: products, isLoading, error } = useAllProducts()
 
   const [search, setSearch] = useState('')
   const value = useDebounce(search)

@@ -1,7 +1,6 @@
+import { Button, Card } from '@src/components'
+import { useAppSelector } from '@src/store'
 import { useEffect, useState } from 'react'
-
-import { Button, Card } from '..'
-import { useAppSelector } from '../../store'
 import Popover from '../Popover'
 import { CartContent } from './components'
 import styles from './styles.module.scss'

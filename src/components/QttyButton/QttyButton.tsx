@@ -1,4 +1,4 @@
-import Button from '../Button'
+import { Button } from '@src/components'
 import styles from './styles.module.scss'
 
 interface QttyButtonProps {

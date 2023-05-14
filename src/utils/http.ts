@@ -1,5 +1,5 @@
-import { FakeService } from '../services/fakeService'
-import { CategoryType } from '../services/fakeService/DTO'
+import { FakeService } from '@src/services/fakeService'
+import { CategoryType } from '@src/services/fakeService/DTO'
 
 export async function RequestCategories() {
   const categories = await FakeService.listCategories()

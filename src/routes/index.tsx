@@ -1,13 +1,13 @@
+import { ErrorCard, Loading } from '@src/components'
+import { Layout } from '@src/layouts'
+import Error from '@src/views/Error'
 import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { ErrorCard, Loading } from '../components'
-import { Layout } from '../layouts'
-import Error from '../views/Error'
-const Home = lazy(() => import('../views/Home'))
-const Category = lazy(() => import('../views/Category'))
-const Product = lazy(() => import('../views/Product'))
-const Products = lazy(() => import('../views/Products'))
-const Success = lazy(() => import('../views/Success'))
+const Home = lazy(() => import('@src/views/Home'))
+const Category = lazy(() => import('@src/views/Category'))
+const Product = lazy(() => import('@src/views/Product'))
+const Products = lazy(() => import('@src/views/Products'))
+const Success = lazy(() => import('@src/views/Success'))
 
 export const routes = createBrowserRouter([
   {

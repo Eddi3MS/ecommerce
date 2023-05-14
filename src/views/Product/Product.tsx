@@ -1,20 +1,18 @@
+import { Button, Card, ErrorCard, Loading, QttyButton } from '@src/components'
+import { IError } from '@src/errors'
+import { useProduct } from '@src/queries'
+import { useAppDispatch } from '@src/store'
+import { handleAddItemToCart } from '@src/store/cartSlice/cartSlice'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button, Card, ErrorCard, Loading, QttyButton } from '../../components'
-import { IError } from '../../errors'
-import { useProduct } from '../../queries'
-import { useAppDispatch, useAppSelector } from '../../store'
-import { handleAddItemToCart } from '../../store/cartSlice/cartSlice'
+import { toast } from 'react-toastify'
 import styles from './styles.module.scss'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
 
   const [counter, setCounter] = useState(1)
-
-  const cartReducer = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
-  console.log('🚀 ~ file: Product.tsx:15 ~ Product ~ cartReducer:', cartReducer)
 
   const {
     data: product,
@@ -54,6 +52,9 @@ const Product = () => {
 
     dispatch(handleAddItemToCart(itemToAdd))
     setCounter(1)
+    toast.success('Product added to the cart!', {
+      autoClose: 3000,
+    })
   }
 
   const totalPrice = product.price * counter
