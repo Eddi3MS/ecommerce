@@ -33,12 +33,12 @@ const Category = () => {
   return (
     <section className={styles.p_category}>
       <div className={styles.p_category_heading}>
-        <h1>
+        <h2>
           <i className={currentCategory?.icon} aria-hidden></i>
           <span style={{ textTransform: 'capitalize' }}>
             {currentCategory?.name}
           </span>
-        </h1>
+        </h2>
 
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla,

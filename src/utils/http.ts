@@ -20,3 +20,9 @@ export async function RequestSingleProduct(id?: string) {
 
   return product
 }
+
+export async function RequestAllProducts() {
+  const product = FakeService.listAllProducts()
+
+  return product
+}

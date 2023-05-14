@@ -1,0 +1,33 @@
+.c_search {
+  position: relative;
+  height: 2rem;
+
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  & > i {
+    left: 0.3rem;
+  }
+
+  input {
+    height: 100%;
+    padding-inline: 1.5rem;
+    border: 1px solid var(--color);
+    border-radius: 8px;
+  }
+
+  & > div > i {
+    right: 0.3rem;
+  }
+
+  &:is(:focus-within) {
+    input {
+      outline: none;
+      border-color: var(--hover);
+      box-shadow: 0 0 0 1px var(--hover);
+    }
+  }
+}

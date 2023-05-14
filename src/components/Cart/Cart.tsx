@@ -22,31 +22,37 @@ const Cart = () => {
   }, [cartLength])
 
   return (
-    <Popover
-      content={
-        cartLength ? (
+    <Popover>
+      <Popover.Trigger>
+        <Button
+          className={styles.c_cart_trigger}
+          aria-label="open cart popover"
+        >
+          {cartLength ? (
+            <span
+              className={[
+                styles.c_cart_trigger_counter,
+                showPulse ? styles.pulse : '',
+              ].join(' ')}
+            >
+              {cartLength}
+            </span>
+          ) : null}
+          <i className="ph ph-shopping-cart"></i>
+        </Button>
+      </Popover.Trigger>
+      <Popover.Content>
+        {cartLength ? (
           <CartContent />
         ) : (
           <Card className={styles.c_cart_no_content}>
             <Card.Image src="/no_items.gif" />
             <Card.Title title="There is no items in your cart yet." />
           </Card>
-        )
-      }
-    >
-      <Button className={styles.c_cart_trigger} aria-label="open cart popover">
-        {cartLength ? (
-          <span
-            className={[
-              styles.c_cart_trigger_counter,
-              showPulse ? styles.pulse : '',
-            ].join(' ')}
-          >
-            {cartLength}
-          </span>
-        ) : null}
-        <i className="ph ph-shopping-cart"></i>
-      </Button>
+        )}
+        <Popover.Arrow />
+        <Popover.Close />
+      </Popover.Content>
     </Popover>
   )
 }

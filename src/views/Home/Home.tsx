@@ -23,6 +23,10 @@ const Home = () => {
 
   return (
     <section className={styles.p_home_categories}>
+      <NavLink to="/products">
+        <i className="ph ph-storefront"></i>
+        <span style={{ textTransform: 'capitalize' }}>All Products</span>
+      </NavLink>
       {data?.map((category) => (
         <NavLink to={category.route.replace(' ', '-')} key={category.id}>
           <i className={category.icon}></i>

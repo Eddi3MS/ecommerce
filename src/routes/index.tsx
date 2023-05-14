@@ -6,6 +6,7 @@ import Error from '../views/Error'
 const Home = lazy(() => import('../views/Home'))
 const Category = lazy(() => import('../views/Category'))
 const Product = lazy(() => import('../views/Product'))
+const Products = lazy(() => import('../views/Products'))
 const Success = lazy(() => import('../views/Success'))
 
 export const routes = createBrowserRouter([
@@ -29,6 +30,14 @@ export const routes = createBrowserRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Category />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'products',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Products />
               </Suspense>
             ),
           },

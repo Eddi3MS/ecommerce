@@ -1,10 +1,14 @@
-.p_category {
+.p_all_products {
   display: grid;
-  max-width: 680px;
+  width: min(680px, 100% - 2rem);
   margin-inline: auto;
   padding-inline: 1rem;
 
   &_heading {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     border-bottom: 2px solid var(--color);
     margin-bottom: 2.5rem;
     padding-bottom: 1rem;
@@ -12,12 +16,6 @@
     h2 {
       font-size: 2.5rem;
       font-weight: 400;
-    }
-
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      max-width: 450px;
     }
   }
 

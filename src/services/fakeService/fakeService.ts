@@ -12,6 +12,32 @@ import {
 } from './DTO'
 
 class FakeService {
+  public static async listAllProducts(): Promise<ProductsListDTO> {
+    try {
+      const response = await api.get<ProductsListDTO>('')
+
+      if (!response.data) {
+        throw new AppError('Something went wrong when listing products.')
+      }
+
+      const parsedData = productsListSchema.parse(response.data)
+
+      return parsedData
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errorMessages = error.errors?.[0]?.message
+
+        throw new AppError(`Failed to parse products data: ${errorMessages}`)
+      } else {
+        const errorHandling = new ErrorHandling(error)
+        throw new AppError(
+          errorHandling.error.message,
+          errorHandling.error.statusCode
+        )
+      }
+    }
+  }
+
   public static async listCategories(): Promise<CategoriesDTO> {
     try {
       const response = await api.get<CategoriesDTO>(`categories`)
@@ -71,7 +97,7 @@ class FakeService {
       const response = await api.get<ProductDTO>(`${productId}`)
 
       if (!response.data) {
-        throw new AppError('Product with the given ID doesnt exist.')
+        throw new AppError("Product with the given ID doesn't exist.")
       }
 
       const parsedData = productSchema.parse(response.data)

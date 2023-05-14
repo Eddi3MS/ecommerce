@@ -2,7 +2,7 @@
   width: min(680px, 100% - 2rem);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
 
   a {
