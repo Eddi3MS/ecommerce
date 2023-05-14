@@ -13,6 +13,7 @@
     position: sticky;
     top: 0;
     background-color: #f6f6f8;
+    z-index: 2;
 
     &_wrapper {
       display: flex;
@@ -26,17 +27,6 @@
 
         &:hover {
           color: var(--hover);
-        }
-      }
-
-      &_button {
-        width: 30px;
-        height: 30px;
-        border: none;
-        padding: 0.5rem;
-
-        i {
-          font-size: 1.5rem;
         }
       }
     }

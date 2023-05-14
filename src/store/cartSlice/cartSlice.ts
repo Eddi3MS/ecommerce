@@ -32,9 +32,36 @@ export const cartSlice = createSlice({
         state.cart = [...state.cart, payload]
       }
     },
+    handleChangeCartItemQtty(
+      state,
+      { payload }: { payload: { type: 'add' | 'remove'; id: number } }
+    ) {
+      state.cart = state.cart.map((product) =>
+        product.id === payload.id
+          ? {
+              ...product,
+              quantity:
+                payload.type === 'add'
+                  ? product.quantity + 1
+                  : product.quantity - 1,
+            }
+          : product
+      )
+    },
+
+    handleRemoveProductFromCart(
+      state,
+      { payload }: { payload: { id: number } }
+    ) {
+      state.cart = state.cart.filter((product) => product.id !== payload.id)
+    },
   },
 })
 
-export const { handleAddItemToCart } = cartSlice.actions
+export const {
+  handleAddItemToCart,
+  handleChangeCartItemQtty,
+  handleRemoveProductFromCart,
+} = cartSlice.actions
 
 export default cartSlice.reducer

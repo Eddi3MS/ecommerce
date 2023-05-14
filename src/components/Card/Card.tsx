@@ -30,6 +30,7 @@ const Image = ({ fallback, src, alt = '', className, ...rest }: ImageProps) => {
     <img
       {...getImageProps()}
       className={[styles.c_card_image, className ? className : ''].join(' ')}
+      loading="lazy"
       {...rest}
     />
   )

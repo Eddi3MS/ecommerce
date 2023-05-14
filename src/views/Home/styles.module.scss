@@ -15,6 +15,7 @@
     aspect-ratio: 1/1;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     transition: color 0.2s linear;
+    color: var(--color);
 
     &:hover {
       color: var(--hover);

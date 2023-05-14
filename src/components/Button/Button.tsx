@@ -1,19 +1,21 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
 import styles from './styles.module.scss'
 
-const Button = ({
-  children,
-  className,
-  ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return (
-    <button
-      className={[styles.c_button, className ? className : ''].join(' ')}
-      {...rest}
-    >
-      {children}
-    </button>
-  )
-}
+const Button = forwardRef(
+  (
+    { children, className, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>,
+    ref: React.LegacyRef<HTMLButtonElement>
+  ) => {
+    return (
+      <button
+        className={[styles.c_button, className ? className : ''].join(' ')}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+      </button>
+    )
+  }
+)
 
 export default Button
