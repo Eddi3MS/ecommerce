@@ -1,5 +1,6 @@
 import { Card } from '@src/components'
 import styles from './styles.module.scss'
+import { Link } from 'react-router-dom'
 
 const Success = () => {
   return (
@@ -10,6 +11,7 @@ const Success = () => {
         Well, not really, cuz I didn't got your shipping address, but you get
         the idea.
       </p>
+      <Link to="/">go back home</Link>
     </Card>
   )
 }
