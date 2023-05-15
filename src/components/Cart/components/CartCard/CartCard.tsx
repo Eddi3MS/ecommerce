@@ -31,7 +31,10 @@ const CartCard = ({ id, name, price, qtty }: CartCard) => {
 
   return (
     <Card className={styles.c_cart_card}>
-      <Card.Title title={name} className={styles.c_cart_card_title} />
+      <Card.Title
+        title={name}
+        className={[styles.c_cart_card_title, 'clamp-1'].join(' ')}
+      />
       <Card.Row>
         <QttyButton counter={qtty} handleCounter={handleCounter} />
 

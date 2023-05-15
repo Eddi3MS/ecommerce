@@ -1,40 +1,71 @@
-import { ErrorCard, Loading } from '@src/components'
+import { Card, ErrorCard, Loading, Search } from '@src/components'
 import { IError } from '@src/errors'
-import { useCategories } from '@src/queries'
+import { useDebounce } from '@src/hooks'
+import { useAllProducts } from '@src/queries'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './styles.module.scss'
 
-const Home = () => {
-  const { data, isLoading, error } = useCategories()
+const Products = () => {
+  const { data: products, isLoading, error } = useAllProducts()
+
+  const [search, setSearch] = useState('')
+  const value = useDebounce(search)
+
+  const handleSearch = (search: string) => {
+    setSearch(search)
+  }
 
   if (isLoading) {
     return <Loading />
   }
 
-  if (!!error || !data?.length) {
+  if (!!error || !products?.length) {
     return (
-      <section className={styles.p_home_categories}>
+      <section className={styles.p_home}>
         <ErrorCard
-          errorMessage={(error as IError)?.message ?? 'No categories found.'}
+          errorMessage={(error as IError)?.message ?? 'No products found.'}
         />
       </section>
     )
   }
 
+  const filteredProducts =
+    value && value.length
+      ? products?.filter((p) =>
+          p.title.toLowerCase().includes(value.toLowerCase())
+        )
+      : products
+
   return (
-    <section className={styles.p_home_categories}>
-      <NavLink to="/products">
-        <i className="ph ph-storefront"></i>
-        <span style={{ textTransform: 'capitalize' }}>All Products</span>
+    <section className={styles.p_home}>
+      <div className={styles.p_home_heading}>
+        <h2>All Products</h2>
+        <Search search={search} handleSearch={handleSearch} />
+      </div>
+      <NavLink className={styles.p_home_link_cat} to="/categories">
+        See All Categories
       </NavLink>
-      {data?.map((category) => (
-        <NavLink to={category.route.replace(' ', '-')} key={category.id}>
-          <i className={category.icon}></i>
-          <span style={{ textTransform: 'capitalize' }}>{category.name}</span>
-        </NavLink>
-      ))}
+
+      <div className={styles.p_home_products}>
+        {filteredProducts?.length ? (
+          <>
+            {filteredProducts.map((p) => (
+              <NavLink to={`/products/${String(p.id)}`} key={p.id}>
+                <Card>
+                  <Card.Image src={p.image} alt={`${p.title} image`} />
+                  <Card.Title title={p.title} className="clamp-2" />
+                  <Card.Price price={p.price} />
+                </Card>
+              </NavLink>
+            ))}
+          </>
+        ) : (
+          <p>No match found.</p>
+        )}
+      </div>
     </section>
   )
 }
 
-export default Home
+export default Products

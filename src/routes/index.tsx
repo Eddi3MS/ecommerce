@@ -6,7 +6,7 @@ import { createBrowserRouter } from 'react-router-dom'
 const Home = lazy(() => import('@src/views/Home'))
 const Category = lazy(() => import('@src/views/Category'))
 const Product = lazy(() => import('@src/views/Product'))
-const Products = lazy(() => import('@src/views/Products'))
+const Categories = lazy(() => import('@src/views/Categories'))
 const Success = lazy(() => import('@src/views/Success'))
 
 export const routes = createBrowserRouter([
@@ -26,18 +26,18 @@ export const routes = createBrowserRouter([
             ),
           },
           {
-            path: ':category',
+            path: 'categories',
             element: (
               <Suspense fallback={<Loading />}>
-                <Category />
+                <Categories />
               </Suspense>
             ),
           },
           {
-            path: 'products',
+            path: 'categories/:category',
             element: (
               <Suspense fallback={<Loading />}>
-                <Products />
+                <Category />
               </Suspense>
             ),
           },
