@@ -1,5 +1,11 @@
 # Project:
 Create a small e-commerce app, integrated with a fake API, using React, React Hooks, React Context and Typescript.
+- [x]  React.js with vite;
+- [x]  Hooks & Custom Hooks;
+- [x]  ~~Context API~~  Redux Toolkit (state managment);
+- [x]  Typescript;
+- [x]  React Query (caching)
+- [x]  ZOD (runtime validation)
 
 General considerations:
 Design/UI is not important, but something minimally beautiful is a plus;
