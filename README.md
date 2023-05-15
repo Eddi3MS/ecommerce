@@ -1,11 +1,15 @@
 # Project:
 Create a small e-commerce app, integrated with a fake API, using React, React Hooks, React Context and Typescript.
 - [x]  React.js with vite;
+   - modularization, breaking the app in small chunks
 - [x]  Hooks & Custom Hooks;
-- [x]  ~~Context API~~  Redux Toolkit (state managment);
+- [x]  ~~Context API~~  Redux Toolkit;
+   - I think redux is a better and easy tool to manage the cart state across components and keep it imutable while doing so.
 - [x]  Typescript;
-- [x]  React Query (caching)
-- [x]  ZOD (runtime validation)
+- [x]  React Query;
+   - A great tool to cache http responses, it even deduplicate calls that are made from diferent components at same time.
+- [x]  ZOD;
+   - validate the format of the api return, throwing an error if something unexpected is returned
 
 General considerations:
 Design/UI is not important, but something minimally beautiful is a plus;
