@@ -6,7 +6,7 @@ Design/UI is not important, but something minimally beautiful is a plus;
 What will be reviewed is code organization, componentization, good practices;
 We expect to see a functional app, so error/loading/success messages should be present;
 
-[live](https://effervescent-souffle-3dc516.netlify.app/).
+[live](https://www.ecommercee.edsonmarcelo.com.br/).
 
 - [x]  User should be able to see all Product Categories;
 - [x]  User should be able to enter into a Category to see category details;
